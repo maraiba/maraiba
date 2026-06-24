@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   ScrollView,
   Platform,
   KeyboardAvoidingView,
+  Animated,
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -19,6 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { loadAlarms, addAlarm, updateAlarm } from '../services/storage';
 import { scheduleAlarmNotification, cancelAlarmNotification } from '../services/scheduler';
 import { Alarm } from '../types/alarm';
+import { Confetti } from '../components/Confetti';
 
 export default function AddAlarmScreen() {
   const router = useRouter();
@@ -32,6 +34,9 @@ export default function AddAlarmScreen() {
   const [label, setLabel] = useState('');
   const [photoUri, setPhotoUri] = useState<string | null>(null);
   const [existing, setExisting] = useState<Alarm | null>(null);
+  const [saved, setSaved] = useState(false);
+  const successScale = useRef(new Animated.Value(0)).current;
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -94,8 +99,35 @@ export default function AddAlarmScreen() {
       await addAlarm({ ...alarm, notificationId });
     }
 
-    router.back();
+    setSaved(true);
+    Animated.spring(successScale, {
+      toValue: 1,
+      useNativeDriver: true,
+      bounciness: 14,
+    }).start();
+    timerRef.current = setTimeout(() => router.back(), 5000);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  if (saved) {
+    const timeStr = `${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
+    return (
+      <View style={styles.successContainer}>
+        <Confetti />
+        <Animated.View style={[styles.successCard, { transform: [{ scale: successScale }] }]}>
+          <Text style={styles.successCheck}>✓</Text>
+          <Text style={styles.successTitle}>Ébresztő beállítva!</Text>
+          <Text style={styles.successTime}>{timeStr}</Text>
+          {label ? <Text style={styles.successLabel}>{label}</Text> : null}
+        </Animated.View>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -266,5 +298,36 @@ const styles = StyleSheet.create({
   removeBtnText: {
     fontSize: 15,
     color: '#FF3B30',
+  },
+  successContainer: {
+    flex: 1,
+    backgroundColor: '#0A1628',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  successCard: {
+    alignItems: 'center',
+    gap: 10,
+    paddingHorizontal: 40,
+  },
+  successCheck: {
+    fontSize: 72,
+    color: '#34C759',
+    lineHeight: 88,
+  },
+  successTitle: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  successTime: {
+    fontSize: 52,
+    fontWeight: '200',
+    color: '#FFFFFF',
+    letterSpacing: -2,
+  },
+  successLabel: {
+    fontSize: 16,
+    color: '#8E8E93',
   },
 });
