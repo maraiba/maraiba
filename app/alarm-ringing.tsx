@@ -183,7 +183,7 @@ const PHOTO_H = Math.min(width * 0.75, height * 0.42);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#0A1628',
   },
   bgImage: {
     position: 'absolute',
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width,
     height,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: '#071020',
   },
   overlay: {
     position: 'absolute',

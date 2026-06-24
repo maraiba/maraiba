@@ -115,7 +115,7 @@ export default function AlarmListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#0A1628',
   },
   header: {
     flexDirection: 'row',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 16,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#2C2C2E',
+    borderBottomColor: '#1E3A5F',
   },
   title: {
     fontSize: 28,

@@ -32,7 +32,7 @@ export function AlarmItem({ alarm, onToggle, onDelete, onPress }: Props) {
       <Switch
         value={alarm.enabled}
         onValueChange={onToggle}
-        trackColor={{ true: '#34C759', false: '#2C2C2E' }}
+        trackColor={{ true: '#34C759', false: '#1E3A5F' }}
         thumbColor="#FFFFFF"
         ios_backgroundColor="#2C2C2E"
       />
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1C1C1E',
+    backgroundColor: '#102040',
     borderRadius: 16,
     padding: 14,
     gap: 14,

@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   container: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#0A1628',
   },
   header: {
     flexDirection: 'row',
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 14,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#2C2C2E',
+    borderBottomColor: '#1E3A5F',
   },
   title: {
     fontSize: 17,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
   },
   input: {
-    backgroundColor: '#1C1C1E',
+    backgroundColor: '#102040',
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 14,
@@ -243,13 +243,13 @@ const styles = StyleSheet.create({
   },
   photoEmpty: {
     height: 160,
-    backgroundColor: '#1C1C1E',
+    backgroundColor: '#102040',
     borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
     borderWidth: 1,
-    borderColor: '#2C2C2E',
+    borderColor: '#1E3A5F',
     borderStyle: 'dashed',
   },
   photoEmptyText: {

@@ -52,7 +52,7 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar style="light" />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#000' } }}>
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#0A1628' } }}>
         <Stack.Screen name="index" />
         <Stack.Screen
           name="add-alarm"
