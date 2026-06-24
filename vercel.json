@@ -1,7 +1,10 @@
 {
-  "buildCommand": "npx expo export --platform web",
+  "buildCommand": "EXPO_NO_DEPENDENCY_VALIDATION=1 npx expo export --platform web",
   "outputDirectory": "dist",
   "framework": null,
+  "env": {
+    "EXPO_NO_DEPENDENCY_VALIDATION": "1"
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
