@@ -3,7 +3,6 @@ export interface Alarm {
   hour: number;
   minute: number;
   label: string;
-  photoUri: string | null;
+  photo: string | null; // base64 data URL
   enabled: boolean;
-  notificationId: string | null;
 }
