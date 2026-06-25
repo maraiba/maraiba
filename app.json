@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Ébresztő",
+    "name": "Maraiba",
     "slug": "maraiba",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,15 +8,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "hu.maraiba.alarm",
-      "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Az ébresztőhöz fotót szeretnél hozzáadni",
-        "NSCameraUsageDescription": "Az ébresztőhöz fotót szeretnél készíteni",
-        "UIBackgroundModes": ["audio"]
-      }
+      "bundleIdentifier": "hu.maraiba.app"
     },
     "android": {
-      "package": "hu.maraiba.alarm",
+      "package": "hu.maraiba.app",
       "adaptiveIcon": {
         "backgroundColor": "#000000"
       }
@@ -26,20 +21,7 @@
       "output": "static"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-notifications",
-        {
-          "color": "#000000"
-        }
-      ],
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Az ébresztőhöz fotót szeretnél hozzáadni",
-          "cameraPermission": "Az ébresztőhöz fotót szeretnél készíteni"
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
